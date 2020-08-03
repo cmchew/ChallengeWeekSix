@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -12,16 +13,20 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
-
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/register").permitAll()
-                .antMatchers("/").hasAnyRole("ADMIN", "USER")
+                .antMatchers("/register").hasRole("ADMIN")
+                .antMatchers("/").permitAll()//design new home page welcome to courses
+                .antMatchers("/add").hasRole("ADMIN")
+                .antMatchers("/process").hasRole("ADMIN")
+                .antMatchers("/list").permitAll()
+                .antMatchers("/show").permitAll()//hasAnyRole("ADMIN", "USER")
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
@@ -38,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
     @Autowired
     private DataSource dataSource;
 

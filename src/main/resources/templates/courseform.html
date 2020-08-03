@@ -1,16 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Admin</title>
+    <title>CourseForm</title>
     <div th:replace="base :: headerfg"></div>
-</head>
-<body>
-<div th:replace="base :: navlinksfg"></div>
-
-<h1>Admin Page</h1>
-<title>CourseForm</title>
-<div th:replace="base :: headerfg"></div>
 </head>
 <body>
 <div th:replace="base :: navlinksfg"></div>
@@ -43,9 +36,6 @@
 
 
 </form>
-
-<a th:href="@{/register}">Click Here</a> to create a new user.
-
 <div th:replace="base ::footerfg"></div>
 </body>
 </html>

@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
@@ -17,11 +14,63 @@ import java.security.Principal;
 public class HomeCtrl {
 
     @Autowired
+    EmployeeRepository employeeRepository;
+
+    @Autowired
+    DepartmentRepository departmentRepository;
+
+    @Autowired
     UserRepository userRepository;
 
     @Autowired
     RoleRepository roleRepository;
 
+    @RequestMapping("/")
+    public String index(Model model){
+        model.addAttribute("courses", courseRepository.findAll());
+        return "index";
+    }
+    @GetMapping("/list")
+    public String listCourses(Model model){
+        model.addAttribute("course", new Department());
+        return "list";
+    }
+    @GetMapping("/add")
+    public String courseForm(Model model){
+        model.addAttribute("course", new Department());
+        return "courseform";
+    }
+    @PostMapping("/process")
+    public String processForm(@Valid Department course,
+                              BindingResult result){
+        if (result.hasErrors()){
+            return "courseform";
+        }
+        courseRepository.save(course);
+        return "redirect:/";
+    }
+
+    @RequestMapping("/detail/{id}")
+    public String showCourse(@PathVariable("id") long id, Model model)
+
+    {
+        model.addAttribute("course", courseRepository.findById(id).get());
+        return "show";
+    }
+
+    @RequestMapping("/update/{id}")
+    public String updateCourse(@PathVariable("id") long id,
+                               Model model){
+        model.addAttribute("course", courseRepository.findById(id).get());
+        return "courseform";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delCourse(@PathVariable("id") long id){
+        courseRepository.deleteById(id);
+        return "redirect:/";
+
+    }
     @GetMapping("/register")
     public String showRegistrationPage(Model model){
         model.addAttribute("user", new User());
@@ -55,11 +104,11 @@ public class HomeCtrl {
         return "secure";
     }
 
-    @RequestMapping("/")
-    public String index() {
-
-        return "index";
-    }
+//    @RequestMapping("/")
+//    public String index() {
+//
+//        return "index";
+//    }
     @RequestMapping("/login")
     public String login() {
         return "login";
@@ -72,5 +121,6 @@ public class HomeCtrl {
     public String admin() {
         return "admin";
     }
+
 
 }

@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+    <div th:replace="base :: headerfg"></div>
 </head>
 <body>
+<div th:replace="base :: navlinksfg"></div>
+
 <form autocomplete="off"
       th:action="@{/processregister}"
       th:object="${user}" method="post">
@@ -58,5 +61,7 @@
 
 
 </form>
+
+<div th:replace="base ::footerfg"></div>
 </body>
 </html>
