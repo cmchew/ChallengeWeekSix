@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Team List</title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<body>
+<div th:replace="base :: navlinksfg"></div>
+
+<div th:each="department : ${departments}">
+        <p th:text="${department.name}"></p>
+        <p th:text="${department.location}"></p>
+</div>
+
+    <a th:href="@{/updateDepartment/{id}(id=${department.id})}">Update</a>
+    <a th:href="@{/detailDepartment/{id}(id=${department.id})}">Details</a>
+
+<div th:replace="base ::footerfg"></div>
+</body>
+</html>

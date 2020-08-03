@@ -9,7 +9,7 @@ import java.util.Set;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long emplid;
     private String name;
     private String title;
     private String team;
@@ -26,12 +26,12 @@ public class Employee {
     public Employee() {
     }
 
-    public long getId() {
-        return id;
+    public long getEmplidd() {
+        return emplid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setEmplid(long id) {
+        this.emplid = emplid;
     }
 
     public String getName() {
@@ -60,7 +60,7 @@ public class Employee {
         return departments;
     }
 
-    public void setSales(Set<Department> sales) {
+    public void setDepartments(Set<Department> departments) {
         this.departments = departments;
     }
 }

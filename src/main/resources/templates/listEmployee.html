@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee List</title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<body>
+<div th:replace="base :: navlinksfg"></div>
+
+
+Name :<span th:text="${employee.name}" ></span><br />
+Title :<span th:text="${employee.title}" ></span><br />
+Team :<span th:text="${employee.team}" ></span><br />
+
+<a th:href="@{/updateEmployee/{id}(id=${employee.id})}">Update</a>
+<a th:href="@{/detailEmployee/{id}(id=${employee.id})}">Details</a>
+<!--<a th:href="@{/delete/{id}(id=${department.id})}">Delete</a>-->
+
+<div th:replace="base ::footerfg"></div>
+</body>
+</html>

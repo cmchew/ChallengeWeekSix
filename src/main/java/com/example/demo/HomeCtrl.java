@@ -30,18 +30,18 @@ public class HomeCtrl {
         model.addAttribute("employees", employeeRepository.findAll());
         return "index";
     }
-    @GetMapping("/listEmployee")
+    @RequestMapping("/listEmployee")
     public String listEmployees(Model model){
         model.addAttribute("employees", employeeRepository.findAll());
         return "listEmployee";
     }
-    @GetMapping("/listDepartment")
+    @RequestMapping("/listDepartment")
     public String listDepartment(Model model){
         model.addAttribute("department", departmentRepository.findAll());
         return "listDepartment";
     }
-    @RequestMapping("/updateEmpl/{id}")
-    public String updateEmpl(@PathVariable("id") long id, Model model){
+    @RequestMapping("/updateEmployee/{id}")
+    public String updateEmployee(@PathVariable("id") long id, Model model){
         model.addAttribute("employee", employeeRepository.findById(id));
         return "addEmployee";
     }
@@ -64,14 +64,30 @@ public class HomeCtrl {
 
     @RequestMapping("/updateDepartment/{id}")
     public String updateDepartment(@PathVariable("id") long id, Model model){
-        Department department = departmentRepository.findById().get();
+        Department department = departmentRepository.findById(id).get();
+        model.addAttribute("department", department);
+        return "detailDepartment";
+    }
+    @GetMapping("/addDepartment")
+    public String addDepartment(Model model){
+        model.addAttribute("department", new Department());
+        return "addDepartment";
+    }
+    @PostMapping("/processDepartment")
+    public String processEmployee(@ModelAttribute Department department) {
+        departmentRepository.save(department);
+        return "redirect:/";
+    }
+    @RequestMapping("/detailDepartment/{id}")
+    public String detailDepartment(@PathVariable("id") long id, Model model) {
+        Department department = departmentRepository.findById(id).get();
         model.addAttribute("department", department);
         return "detailDepartment";
     }
 
-//    @RequestMapping("/delete/{id}")
-//    public String delCourse(@PathVariable("id") long id){
-//        courseRepository.deleteById(id);
+//    @RequestMapping("/deleteEmployee/{id}")
+//    public String deleteEmployee(@PathVariable("id") long id){
+//        employeeRepository.deleteById(id);
 //        return "redirect:/";
 //
 //    }

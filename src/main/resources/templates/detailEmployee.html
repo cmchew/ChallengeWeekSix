@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Detail</title>
+</head>
+<body>
+
+Name :<span th:text="${employee.name}" ></span><br />
+Title :<span th:text="${employee.title}" ></span><br />
+Team :<span th:text="${employee.team}" ></span><br />
+
+<a th:href="@{/deleteEmployee/{id}(id=${employee.id})}">Deactivate this employee</a>
+</body>
+</html>

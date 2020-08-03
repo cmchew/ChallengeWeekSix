@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Form</title>
+    <div th:replace="base :: headerfg"></div>
+</head>
+<body>
+<div th:replace="base :: navlinksfg"></div>
+
+<form action="#"
+      th:action="@{/processEmployee}"
+      th:object="${employee}"
+      method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    Name :<input type="text" th:field="*{name}" /><br />
+
+    Title :<input type="text" th:field="*{title}" /><br />
+
+    Team :<input type="text" th:field="*{team}" />
+
+    <br/>
+    <input type="submit" value="Enter" />
+
+
+
+</form>
+<div th:replace="base ::footerfg"></div>
+</body>
+</html>

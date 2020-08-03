@@ -12,8 +12,9 @@ import java.util.Set;
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long deptid;
     private String name;
+    private String location;
 
 //    @NotNull
 //    @Size (min=3)
@@ -45,12 +46,12 @@ public class Department {
 //    }
 
 
-    public long getId() {
-        return id;
+    public long getDeptid() {
+        return deptid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setDeptid(long deptid) {
+        this.deptid = deptid;
     }
 
     public String getName() {
@@ -59,6 +60,13 @@ public class Department {
 
     public void setName(String name) {
         this.name = name;
+    }
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String name) {
+        this.location = location;
     }
 
 
@@ -103,11 +111,11 @@ public class Department {
         this.employees = employees;
     }
 
-    public void addempl(Employee empl) {
+    public void addEmployee(Employee employee) {
         if (this.employees == null) {
             this.employees = new HashSet<Employee>();
         }
-        this.employees.add(empl);
+        this.employees.add(employee);
     }
 }
 

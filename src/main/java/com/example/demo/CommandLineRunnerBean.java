@@ -35,67 +35,67 @@ public class CommandLineRunnerBean implements CommandLineRunner {
 
         Employee employee1 = new Employee();
         employee1.setName("Cassie");
-        employee1.setTitle("");
+        employee1.setTitle("Creative");
         employee1.setTeam("");
 
         Employee employee2 = new Employee();
         employee2.setName("Ingrid");
-        employee2.setTitle("");
+        employee2.setTitle("Creative");
         employee2.setTeam("");
 
         Employee employee3 = new Employee();
         employee3.setName("Amaya");
-        employee3.setTitle("");
+        employee3.setTitle("Creative");
         employee3.setTeam("");
 
         Employee employee4 = new Employee();
         employee4.setName("Olga");
-        employee4.setTitle("");
+        employee4.setTitle("Creative");
         employee4.setTeam("");
 
         Employee employee5 = new Employee();
         employee5.setName("Raphael");
-        employee5.setTitle("");
+        employee5.setTitle("Creative");
         employee5.setTeam("");
 
         Employee employee6 = new Employee();
         employee6.setName("Joyce");
-        employee6.setTitle("");
+        employee6.setTitle("Creative");
         employee6.setTeam("");
 
         Employee employee7 = new Employee();
         employee7.setName("Nahom");
-        employee7.setTitle("");
+        employee7.setTitle("Creative");
         employee7.setTeam("");
 
         Employee employee8 = new Employee();
         employee8.setName("Calieb");
-        employee8.setTitle("");
+        employee8.setTitle("Creative");
         employee8.setTeam("");
 
         Department department1 = new Department();
-        department1.setName("hr");
-//        department1.setPrice(299.00);
-        department1.addempl(employee1);
-        department1.addempl(employee2);
+        department1.setName("Product Management");
+        department1.setLocation("NYC");
+        department1.addEmployee(employee1);
+        department1.addEmployee(employee2);
 
         Department department2 = new Department();
-        department2.setName("it");
-//        department2.setPrice(19.00);
-        department2.addempl(employee3);
-        department2.addempl(employee4);
+        department2.setName("Design");
+        department2.setLocation("DC");
+        department2.addEmployee(employee3);
+        department2.addEmployee(employee4);
 
         Department department3 = new Department();
-        department3.setName("sales");
-//        department3.setPrice(19.00);
-        department3.addempl(employee5);
-        department3.addempl(employee6);
+        department3.setName("Testing");
+        department3.setLocation("Chicago");
+        department3.addEmployee(employee5);
+        department3.addEmployee(employee6);
 
         Department department4 = new Department();
-        department4.setName("sales");
-//        department4.setPrice(19.00);
-        department4.addempl(employee7);
-        department4.addempl(employee8);
+        department4.setName("Art");
+        department4.setLocation("LA");
+        department4.addEmployee(employee7);
+        department4.addEmployee(employee8);
 
         employeeRepository.save(employee8);
         employeeRepository.save(employee7);

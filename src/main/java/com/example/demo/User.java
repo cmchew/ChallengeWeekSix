@@ -15,7 +15,7 @@ public class User {
     private long id;
 
     @Column (name = "username")
-    @Size (min=3)
+    @Size (min=2)
     private String username;
 
     @Column (name = "email")
