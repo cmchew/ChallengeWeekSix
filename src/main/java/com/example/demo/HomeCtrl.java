@@ -27,50 +27,54 @@ public class HomeCtrl {
 
     @RequestMapping("/")
     public String index(Model model){
-        model.addAttribute("courses", courseRepository.findAll());
+        model.addAttribute("employees", employeeRepository.findAll());
         return "index";
     }
-    @GetMapping("/list")
-    public String listCourses(Model model){
-        model.addAttribute("course", new Department());
-        return "list";
+    @GetMapping("/listEmployee")
+    public String listEmployees(Model model){
+        model.addAttribute("employees", employeeRepository.findAll());
+        return "listEmployee";
     }
-    @GetMapping("/add")
-    public String courseForm(Model model){
-        model.addAttribute("course", new Department());
-        return "courseform";
+    @GetMapping("/listDepartment")
+    public String listDepartment(Model model){
+        model.addAttribute("department", departmentRepository.findAll());
+        return "listDepartment";
     }
-    @PostMapping("/process")
-    public String processForm(@Valid Department course,
-                              BindingResult result){
-        if (result.hasErrors()){
-            return "courseform";
-        }
-        courseRepository.save(course);
+    @RequestMapping("/updateEmpl/{id}")
+    public String updateEmpl(@PathVariable("id") long id, Model model){
+        model.addAttribute("employee", employeeRepository.findById(id));
+        return "addEmployee";
+    }
+    @GetMapping("/addEmployee")
+    public String addEmployee(Model model){
+        model.addAttribute("employee", new Employee());
+        return "addEmployee";
+    }
+    @PostMapping("/processEmployee")
+    public String processEmployee(@ModelAttribute Employee employee) {
+        employeeRepository.save(employee);
         return "redirect:/";
     }
-
-    @RequestMapping("/detail/{id}")
-    public String showCourse(@PathVariable("id") long id, Model model)
-
-    {
-        model.addAttribute("course", courseRepository.findById(id).get());
-        return "show";
+    @RequestMapping("/detailEmployee/{id}")
+    public String detailEmployee(@PathVariable("id") long id, Model model) {
+        Employee employee = employeeRepository.findById(id).get();
+        model.addAttribute("employee", employee);
+        return "detailEmployee";
     }
 
-    @RequestMapping("/update/{id}")
-    public String updateCourse(@PathVariable("id") long id,
-                               Model model){
-        model.addAttribute("course", courseRepository.findById(id).get());
-        return "courseform";
+    @RequestMapping("/updateDepartment/{id}")
+    public String updateDepartment(@PathVariable("id") long id, Model model){
+        Department department = departmentRepository.findById().get();
+        model.addAttribute("department", department);
+        return "detailDepartment";
     }
 
-    @RequestMapping("/delete/{id}")
-    public String delCourse(@PathVariable("id") long id){
-        courseRepository.deleteById(id);
-        return "redirect:/";
-
-    }
+//    @RequestMapping("/delete/{id}")
+//    public String delCourse(@PathVariable("id") long id){
+//        courseRepository.deleteById(id);
+//        return "redirect:/";
+//
+//    }
     @GetMapping("/register")
     public String showRegistrationPage(Model model){
         model.addAttribute("user", new User());
