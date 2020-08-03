@@ -19,13 +19,13 @@ public class CommandLineRunnerBean implements CommandLineRunner {
     EmployeeRepository employeeRepository;
 
     public void run(String...args){
-        User user = new User("mc", "mc@domain.com", "mc", "MC", "Raptors", true);
+        User user = new User("mc", "mc@domain.com", "mc", "MC", "Raptor", true);
         Role userRole = new Role("mc", "ROLE_USER");
 
         userRepository.save(user);
         roleRepository.save(userRole);
 
-        User admin = new User("admin", "admin@domain.com", "admin", "Admin", "Person", true);
+        User admin = new User("admin", "admin@domain.com", "admin", "Cassie", "Chew", true);
         Role adminRole1 = new Role ("admin", "ROLE_ADMIN");
         Role adminRole2 = new Role("admin", "ROLE_USER");
 

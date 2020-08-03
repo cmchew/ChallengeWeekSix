@@ -5,10 +5,15 @@
     <title>Login Page</title>
     <div th:replace="base :: headerfg"></div>
 </head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
 <body>
 <div th:replace="base :: navlinksfg"></div>
-
-<h1>Login Page</h1>
+<div class = "main">
+<h4>Please sign in</h4>
 
 <div th:if="${param.error}">
     Invalid username or password
@@ -24,5 +29,6 @@
 </form>
 
 <div th:replace="base ::footerfg"></div>
+</div>
 </body>
 </html>

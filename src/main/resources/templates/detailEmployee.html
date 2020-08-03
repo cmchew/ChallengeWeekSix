@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee Detail</title>
-</head>
+</head><style>
+    .main {
+        padding: 20px;
+    }
+</style>
 <body>
-
+<div class = "main"></div>
 Name :<span th:text="${employee.name}" ></span><br />
 Title :<span th:text="${employee.title}" ></span><br />
 Team :<span th:text="${employee.team}" ></span><br />
 
 <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}">Deactivate this employee</a>
+</div>
 </body>
 </html>

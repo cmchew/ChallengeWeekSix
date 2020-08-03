@@ -5,8 +5,15 @@
     <title>Employee Form</title>
     <div th:replace="base :: headerfg"></div>
 </head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
 <body>
+
 <div th:replace="base :: navlinksfg"></div>
+<div class = "main">
 
 <form action="#"
       th:action="@{/processEmployee}"
@@ -26,6 +33,8 @@
 
 
 </form>
+
 <div th:replace="base ::footerfg"></div>
+</div>
 </body>
 </html>

@@ -2,18 +2,26 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>MC Creates</title>
+    <title>MC Creatives</title>
     <div th:replace="base :: headerfg"></div>
 </head>
+<style>
+    .main {
+    padding: 20px;
+    }
+</style>
 <body>
 <div th:replace="base :: navlinksfg"></div>
-
-<h2>MC Creates</h2>
+<div class="main">
+<h2>MC Creatives</h2>
 <p th:if="${message}">[[${message}]]</p>
 
-<p>Welcome to MC Creates. Your source for top talent for your editorial projects, web development and design. Click here to view the <a th:href="@{/listDepartment}">our team</a>.
+<p>Welcome to MC Creatives.<br>
+    We are the DMV's premiere source to find virtual talent for innovative editorial, web development and design projects.<br>
+    Please click here to view our <a th:href="@{/listDepartment}">our teams</a>.
 <br>
 
 <div th:replace="base ::footerfg"></div>
+</div>
 </body>
 </html>

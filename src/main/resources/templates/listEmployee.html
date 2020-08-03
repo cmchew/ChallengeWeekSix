@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Employee List</title>
-    <div th:replace="base :: headerfg"></div>
+
 </head>
+<style>
+    .main {
+        padding: 20px;
+    }
+</style>
 <body>
+
 <div th:replace="base :: navlinksfg"></div>
+
+<div class = "main"></div>
 
 
 Name :<span th:text="${employee.name}" ></span><br />
@@ -18,5 +26,6 @@ Team :<span th:text="${employee.team}" ></span><br />
 <!--<a th:href="@{/delete/{id}(id=${department.id})}">Delete</a>-->
 
 <div th:replace="base ::footerfg"></div>
+</div>
 </body>
 </html>
